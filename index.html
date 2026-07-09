@@ -370,6 +370,11 @@
   .day-badge{font-family:"Cormorant Garamond",serif; font-style:italic; background:linear-gradient(135deg, var(--gold-deep), var(--gold)); color:#fff; padding:6px 18px; border-radius:30px; font-size:14px; font-weight:600; letter-spacing:0.08em; box-shadow:0 3px 10px rgba(138,100,32,0.25)}
   .day-h{font-family:"Noto Serif SC",serif; font-size:24px; font-weight:500; color:var(--ink)}
   .day-h small{display:block; font-size:12px; color:var(--muted); font-family:"JetBrains Mono",monospace; letter-spacing:0.04em; margin-top:3px; font-weight:400}
+  .day-weather{margin-left:auto; display:inline-flex; align-items:center; gap:9px; background:linear-gradient(135deg,#eaf4fb,#f6fbff); border:1px solid var(--line-rail); border-radius:22px; padding:7px 15px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--rail-deep); white-space:nowrap; align-self:center}
+  .day-weather .ico{font-size:16px; line-height:1}
+  .day-weather .t{font-weight:600}
+  .day-weather .cond{color:var(--muted); font-weight:400}
+  @media(max-width:680px){.day-weather{margin-left:0; margin-top:6px}}
   .timeline{display:grid; gap:14px}
   .slot{display:grid; grid-template-columns:110px 1fr; grid-template-areas:"time event"; gap:18px; align-items:stretch}
   .slot .time{grid-area:time; background:linear-gradient(135deg, var(--green-deep) 0%, var(--green) 100%); color:#fff; border-radius:18px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:12px 8px; box-shadow:0 4px 12px rgba(61,97,71,0.22)}
@@ -442,6 +447,18 @@
 
   /* ===== Cautions ===== */
   .cautions-panel{background:linear-gradient(135deg, #fff5e8 0%, #fef0d5 100%); border:1px solid var(--line-warm); border-left:5px solid var(--gold)}
+  /* ===== Weather panel ===== */
+  .weather-panel{background:linear-gradient(135deg,#eaf4fb 0%, #f5fbff 100%); border:1px solid var(--line-rail); border-left:5px solid var(--rail)}
+  .weather-rows{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:6px}
+  .weather-city{background:#fff; border:1px solid var(--line-rail); border-radius:16px; padding:14px 18px}
+  .weather-city .cname{font-family:"Noto Serif SC",serif; font-weight:600; color:var(--rail-deep); font-size:15px; margin-bottom:5px}
+  .weather-city .temps{font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--ink); font-weight:600}
+  .weather-city .feel{font-size:12.5px; color:var(--ink-soft); line-height:1.75; margin-top:5px}
+  .weather-city .feel strong{color:var(--rail-deep)}
+  .weather-city a{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--rail-deep); text-decoration:none; display:inline-block; margin-top:9px; padding:4px 10px; background:var(--rail-soft); border-radius:14px}
+  .weather-city a:hover{background:var(--rail); color:#fff}
+  .weather-disclaimer{font-size:12.5px; color:var(--ink-soft); line-height:1.85; margin-top:16px; padding-top:13px; border-top:1px dashed var(--line-rail)}
+  .weather-disclaimer strong{color:var(--alert)}
   .caution-list{display:grid; gap:11px; margin-top:6px}
   .caution-list .item{display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; padding:11px 0; border-bottom:1px dashed rgba(217,164,65,0.3)}
   .caution-list .item:last-child{border-bottom:none}
@@ -460,9 +477,10 @@
   .person:before{content:""; position:absolute; top:0; left:9px; width:20px; height:20px; border-radius:50%; background:#f0c29a}
   .person:after{content:""; position:absolute; top:22px; left:5px; width:28px; height:42px; border-radius:14px 14px 8px 8px; background:var(--c)}
   .person i{position:absolute; bottom:0; left:11px; width:6px; height:24px; background:#465a64; border-radius:6px; box-shadow:11px 0 0 #465a64; font-style:normal}
-  .p-a{left:30%; --c:#5b7c6d}
-  .p-b{left:46%; --c:#c47878; animation-delay:0.4s}
-  .p-c{left:62%; --c:#e0742a; height:62px; bottom:36px; animation-delay:0.7s}
+  .p-a{left:24%; --c:#5b7c6d}
+  .p-b{left:40%; --c:#c47878; animation-delay:0.4s}
+  .p-c{left:56%; --c:#e0742a; height:62px; bottom:36px; animation-delay:0.7s}
+  .p-d{left:70%; --c:#3f6f8f; height:56px; bottom:38px; animation-delay:1s}
   @keyframes bob{50%{transform:translateY(-7px)}}
 
   /* ===== Footer ===== */
@@ -501,7 +519,7 @@
     <div class="enter-route">
       <span>东京 2晚</span><em>→</em><span>京都 1晚</span><em>→</em><span>大阪 2晚</span>
     </div>
-    <div class="enter-sub">广州直飞往返，六天串起东京的繁华、京都的古意、大阪的烟火气。浴衣看晴空塔夏夜、清晨走千本鸟居、鲸鲨与摩天轮、一路吃遍名店——不赶、不累，把最好的时间留给一家人。</div>
+    <div class="enter-sub">广州直飞往返，六天串起东京的繁华、京都的古意、大阪的烟火气。浴衣看晴空塔夏夜、清晨走千本鸟居、鲸鲨与摩天轮、一路吃遍名店——不赶、不累，把最好的时间留给一家四口。</div>
     <div class="enter-date">2026 . 7 . 31 —— 8 . 5 · 5 泊 6 天</div>
     <button class="enter-btn" id="enter-btn" type="button"><span class="enter-btn-ico">▶</span> 进入旅程</button>
     <div class="enter-hint">♪ 进入后背景音乐自动播放 · 会随东京/京都/大阪自动切换</div>
@@ -594,6 +612,37 @@
         <div class="row"><span>去程</span>广州直飞东京（约4h10m）</div>
         <div class="row"><span>返程</span>大阪关西机场直飞广州（约4h30m）</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEATHER ============ -->
+<section class="spots-section">
+  <div class="day-panel weather-panel">
+    <div class="day-header-row"><div class="day-badge" style="background:linear-gradient(135deg,var(--rail-deep),var(--rail))">天气</div><div class="day-h">六日天气参考 · 8月盛夏<small>WEATHER · 气候常态，非具体预报</small></div></div>
+    <p style="font-size:14px;line-height:1.85;color:var(--ink-soft);margin:2px 0 10px">三城 8 月初都<strong>又热又闷</strong>。下面是往年 <strong>气候平年值（JMA 1991–2020）</strong>，帮你们提前准备防暑；<strong>这不是 7/31–8/5 那几天的具体预报</strong>——真正的逐日预报要出发前约 1 周才准（那时请到下面每城的 weathernews 链接查实时）。</p>
+    <div class="weather-rows">
+      <div class="weather-city">
+        <div class="cname">东京 Tokyo · 7/31–8/2</div>
+        <div class="temps">☀️ 约 31° / 24°</div>
+        <div class="feel">三城里气温最低、但<strong>湿度最高</strong>，大多数日子闷热黏腻；8 月已过梅雨、相对最晴，午后偶有短时阵雨。</div>
+        <a href="https://weathernews.jp/onebox/tenki/tokyo/" target="_blank" rel="noopener">weathernews 东京实时 →</a>
+      </div>
+      <div class="weather-city">
+        <div class="cname">京都 Kyoto · 8/3</div>
+        <div class="temps">🌡️ 约 34° / 25°</div>
+        <div class="feel"><strong>白天与大阪并列最热</strong>（比东京高约 2.3°）；<strong>盆地地形、体感最闷</strong>，正午最难熬——尽量把正午排进室内。午后易雷阵雨。</div>
+        <a href="https://weathernews.jp/onebox/tenki/kyoto/" target="_blank" rel="noopener">weathernews 京都实时 →</a>
+      </div>
+      <div class="weather-city">
+        <div class="cname">大阪 Osaka · 8/4–8/5</div>
+        <div class="temps">🌡️ 约 34° / 26°</div>
+        <div class="feel">白天与京都同热，<strong>夜里最热</strong>（常见"热帯夜"、夜温 ≥25°）；三城里 8 月最干，但仍随身带伞，夜间开空调。</div>
+        <a href="https://weathernews.jp/onebox/tenki/osaka/" target="_blank" rel="noopener">weathernews 大阪实时 →</a>
+      </div>
+    </div>
+    <div class="weather-disclaimer">
+      ⚠ 以上是<strong>往年 8 月气候常态（JMA 平年值），不是 2026 年那几天的具体预报</strong>。7–8 月正值<strong>日本台风季峰值</strong>，台风即使不登陆也可能带来大风大雨、打乱交通。<strong>请出发前约 1 周在 weathernews.jp 查三城实时预报 + 留意台风动态</strong>，行程留 1 天弹性。&nbsp;来源：JMA 气象厅 1991–2020 平年值 · Climates to Travel · 实时预报入口 weathernews.jp。
     </div>
   </div>
 </section>
@@ -748,7 +797,7 @@
 
 <!-- Day panels TOKYO -->
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 1</div><div class="day-h">7月31日 · 周五 · 抵达<small>ARRIVAL · 广州 → 东京</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 1</div><div class="day-h">7月31日 · 周五 · 抵达<small>ARRIVAL · 广州 → 东京</small></div><div class="day-weather"><span class="ico">☀️</span><span class="t">约31°/24°</span><span class="cond">东京·闷热潮湿</span></div></div>
   <div class="timeline">
     <div class="slot transit-slot"><div class="time"><strong>14:45</strong><em>起飞</em></div><div class="event"><h3>广州直飞东京（约4小时10分）</h3><p>约19:55落地。入境、取行李、办Suica/西瓜卡（手机可直接加到钱包）。<small>落地约傍晚，今天就不排硬行程了</small></p></div></div>
     <div class="slot highlight"><div class="time"><strong>晚</strong><em>晚餐</em></div><div class="event"><h3>【野田岩】经典日式鳗鱼饭</h3><p>米其林一星的百年鳗鱼老店，先蒸后烤、秘传酱汁——给舟车劳顿的第一晚一个温柔的开场。<small>⚠ 周日休·建议提前电话预约，见下方"餐厅预约提醒"</small></p></div></div>
@@ -757,18 +806,18 @@
 </div>
 
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 2</div><div class="day-h">8月1日 · 周六 · 浅草浴衣 × 晴空塔夏夜<small>ASAKUSA · SKYTREE · SUMMER NIGHT</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 2</div><div class="day-h">8月1日 · 周六 · 浅草浴衣 × 晴空塔夏夜<small>ASAKUSA · SKYTREE · SUMMER NIGHT</small></div><div class="day-weather"><span class="ico">☀️</span><span class="t">约31°/24°</span><span class="cond">东京·闷热·午后或阵雨</span></div></div>
   <div class="timeline">
     <div class="slot highlight"><div class="time"><strong>09:00</strong><em>上午</em></div><div class="event"><h3>浅草寺 · 雷门 · 换浴衣</h3><p>先在浅草租浴衣（含发型），逛雷门、仲见世、本堂。清晨人少又凉快，拍照最好看。</p></div></div>
     <div class="slot highlight"><div class="time"><strong>12:30</strong><em>午餐</em></div><div class="event"><h3>浅草【大黑家】天妇罗盖饭</h3><p>1887年创业的天丼老店，招牌是芝麻油炸、深色秘传酱汁的"黑色天丼"。<small>⚠ 不接受预约·排队店·只收现金</small></p></div></div>
     <div class="slot transit-slot"><div class="time"><strong>15:00</strong><em>换乘</em></div><div class="event"><h3>浅草 → 晴空塔（东武线1站/或步行）</h3><p>用「<strong>东武</strong>」浅草站（雷门旁那栋大楼里），坐各站停车1站约3分钟到「とうきょうスカイツリー」站；或沿隅田川散步约20分钟。<small>浅草有好几个"浅草站"，去晴空塔认准"东武"那个</small></p></div></div>
     <div class="slot highlight"><div class="time"><strong>17:30</strong><em>傍晚</em></div><div class="event"><h3>晴空塔天望甲板 · 看日落到夜景</h3><p>傍晚上塔，看华灯初上。<small>提前网购指定场次的前售券更省</small></p></div></div>
-    <div class="slot"><div class="time"><strong>19:30</strong><em>夏夜</em></div><div class="event"><h3>隅田川畔散步 · 屋台小吃</h3><p>浴衣、晚风、河边的章鱼烧和炒面——最经典的日本夏夜。<small>关于花火日期，见上方"夏夜"卡片的说明</small></p></div></div>
+    <div class="slot"><div class="time"><strong>19:30</strong><em>夏夜</em></div><div class="event"><h3>隅田川畔散步 · 屋台小吃</h3><p>浴衣、晚风、河边的章鱼烧和炒面——最经典的日本夏夜。<small>⚠ 关于花火：真正在晴空塔/隅田川旁的「隅田川花火」是 <strong>7/25</strong>、你们到之前，赶不上；<strong>8/1当晚的大型花火在很远的江户川区（筱崎）</strong>。所以今晚不专程追花火，安心享受浴衣+塔景+河畔的夏夜就好。</small></p></div></div>
   </div>
 </div>
 
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 3</div><div class="day-h">8月2日 · 周日 · 台场避暑 → 新干线西行<small>ODAIBA · SHINKANSEN TO KYOTO</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 3</div><div class="day-h">8月2日 · 周日 · 台场避暑 → 新干线西行<small>ODAIBA · SHINKANSEN TO KYOTO</small></div><div class="day-weather"><span class="ico">☀️</span><span class="t">约31°/24°</span><span class="cond">东京·闷热</span></div></div>
   <div class="timeline">
     <div class="slot transit-slot"><div class="time"><strong>09:30</strong><em>换乘</em></div><div class="event"><h3>市区 → 台场（新桥搭百合鸥号）</h3><p>新桥站上「百合鸥号」，跨彩虹大桥约13–16分钟到台场。起点站单方向、不会坐反。</p></div></div>
     <div class="slot"><div class="time"><strong>10:00</strong><em>上午</em></div><div class="event"><h3>台场海滨公园 · 自由女神像</h3><p>看海、彩虹大桥、自由女神复制像同框拍照。</p></div></div>
@@ -883,7 +932,7 @@
 </div>
 
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 4</div><div class="day-h">8月3日 · 周一 · 京都 → 大阪<small>FUSHIMI · KIYOMIZU · ON TO OSAKA</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 4</div><div class="day-h">8月3日 · 周一 · 京都 → 大阪<small>FUSHIMI · KIYOMIZU · ON TO OSAKA</small></div><div class="day-weather"><span class="ico">🌡️</span><span class="t">约34°/25°</span><span class="cond">京都·盆地闷热·午后雷阵雨</span></div></div>
   <div class="timeline">
     <div class="slot transit-slot"><div class="time"><strong>07:00</strong><em>清晨</em></div><div class="event"><h3>京都站 → 伏见稻荷（JR奈良线2站）</h3><p>趁早、趁凉、趁人少。JR「稲荷」站出站正对神社大门，最省事。<small>别搭去京阪"伏见稲荷"——那是另一条线、另一个站</small></p></div></div>
     <div class="slot highlight"><div class="time"><strong>07:20</strong><em>上午</em></div><div class="event"><h3>伏见稻荷 · 千本鸟居</h3><p>核心往返约15–20分钟就很值；想爬稻荷山再往上走，注意补水。</p></div></div>
@@ -1018,7 +1067,7 @@
 </div>
 
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 5</div><div class="day-h">8月4日 · 周二 · 海游馆 · 天保山 · 道顿堀<small>KAIYUKAN · TEMPOZAN · DOTONBORI</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 5</div><div class="day-h">8月4日 · 周二 · 海游馆 · 天保山 · 道顿堀<small>KAIYUKAN · TEMPOZAN · DOTONBORI</small></div><div class="day-weather"><span class="ico">🌡️</span><span class="t">约34°/26°</span><span class="cond">大阪·昼夜皆热(热帯夜)</span></div></div>
   <div class="timeline">
     <div class="slot transit-slot"><div class="time"><strong>09:00</strong><em>换乘</em></div><div class="event"><h3>→ 海游馆（大阪Metro中央线「大阪港」站）</h3><p>坐到「大阪港」站（不是"大阪站"！），1号口步行约5分钟。</p></div></div>
     <div class="slot highlight"><div class="time"><strong>09:30</strong><em>清晨</em></div><div class="event"><h3>大阪海游馆 · 看巨大鲸鲨</h3><p>一开门就进，避开人潮。<small>暑假建议提前网上买日时指定票</small></p></div></div>
@@ -1028,7 +1077,7 @@
 </div>
 
 <div class="day-panel">
-  <div class="day-header-row"><div class="day-badge">DAY 6</div><div class="day-h">8月5日 · 周三 · 大阪城 → 关西机场 → 广州<small>OSAKA CASTLE · KIX · HOME</small></div></div>
+  <div class="day-header-row"><div class="day-badge">DAY 6</div><div class="day-h">8月5日 · 周三 · 大阪城 → 关西机场 → 广州<small>OSAKA CASTLE · KIX · HOME</small></div><div class="day-weather"><span class="ico">🌡️</span><span class="t">约34°/26°</span><span class="cond">大阪·白天热·带伞</span></div></div>
   <div class="timeline">
     <div class="slot highlight"><div class="time"><strong>09:00</strong><em>上午</em></div><div class="event"><h3>大阪城 · 天守阁</h3><p>登顶看大阪全景，逛丰臣秀吉主题博物馆。室内凉快，是回程前从容的最后一站。</p></div></div>
     <div class="slot transit-slot"><div class="time"><strong>12:30</strong><em>去机场</em></div><div class="event"><h3>→ 关西机场（南海Rapi:t / JR Haruka）</h3><p>难波搭南海Rapi:t约35–42分；或新大阪/天王寺搭JR Haruka。<small>详见下方「换乘导航③」</small></p></div></div>
@@ -1221,21 +1270,22 @@
 <!-- ============ FAMILY BAND ============ -->
 <div class="family-band">
   <div class="caption">
-    <div class="caption-eyebrow">TOGETHER · 一家人</div>
-    <div class="caption-text">这六天，慢慢走、好好吃，把日子过成回忆。</div>
+    <div class="caption-eyebrow">TOGETHER · 一家四口</div>
+    <div class="caption-text">这六天，属于你们一家四口——慢慢走、好好吃，把日子过成回忆。</div>
   </div>
   <div class="silhouettes">
     <div class="hill"></div>
     <div class="person p-a"><i></i></div>
     <div class="person p-b"><i></i></div>
     <div class="person p-c"><i></i></div>
+    <div class="person p-d"><i></i></div>
   </div>
 </div>
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="footer-quote">愿这趟夏日之旅走得从容，回去翻着照片，还会想起浴衣、花火和那碗热汤豆腐。</div>
-  <div>为一家人企划 · 东京 · 京都 · 大阪 · 2026年夏</div>
+  <div>为一家四口企划 · 东京 · 京都 · 大阪 · 2026年夏</div>
   <div class="footer-credit">TOKYO · KYOTO · OSAKA FAMILY TRIP — SUMMER 2026 · MADE WITH CARE</div>
   <div class="footer-credit">景点照片来自 Wikimedia Commons 等公开授权素材（CC BY-SA / 公有领域），仅作家庭行程参考</div>
 </footer>
