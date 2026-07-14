@@ -430,8 +430,10 @@
   .info-card .label{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:8px}
   .info-card h4{font-family:"Noto Serif SC",serif; font-size:16px; font-weight:600; margin-bottom:10px; color:var(--ink)}
   .info-card .rows{display:grid; grid-template-columns:minmax(0,1fr); gap:5px; font-size:13px; color:var(--ink-soft)}
-  .info-card .rows .row{display:flex; gap:8px; min-width:0}
-  .info-card .rows .row span{color:var(--muted); min-width:60px; flex-shrink:0}
+  /* 用 block+悬挂缩进（同 .spot-meta 思路）：flex 会把行内的 <strong>/<br>/文本节点各自变成 flex item，被挤成竖条 */
+  .info-card .rows .row{display:block; min-width:0; padding-left:68px; text-indent:-68px; word-break:break-word}
+  .info-card .rows .row>span:first-child{display:inline-block; min-width:60px; margin-right:8px; color:var(--muted); text-indent:0; vertical-align:top}
+  .info-card .rows .row.caveat{padding-left:0; text-indent:0}
   .info-card .rows strong{color:var(--ink);font-weight:600}
 
   /* ===== Reservation alert (餐厅预约提醒) ===== */
